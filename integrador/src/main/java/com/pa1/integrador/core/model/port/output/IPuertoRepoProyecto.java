@@ -2,7 +2,7 @@ package com.pa1.integrador.core.model.port.output;
 import com.pa1.integrador.core.model.Project;
 import java.util.Optional;
 
-public interface IPuertorRepoProyecto {
+public interface IPuertoRepoProyecto {
 
     Optional<Project> findById(Long id);
 
