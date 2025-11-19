@@ -11,18 +11,22 @@ public class UpdateStatusRequestDTO {
 
     // Getters y Setters (necesarios para que [JSON] funcione)
     public ProjectStatus getProjectStatus() {
+
         return projectStatus;
     }
 
     public void setProjectStatus(ProjectStatus projectStatus) {
+
         this.projectStatus = projectStatus;
     }
 
     public TaskStatus getTaskStatus() {
+
         return taskStatus;
     }
 
     public void setTaskStatus(TaskStatus taskStatus) {
+
         this.taskStatus = taskStatus;
     }
 }

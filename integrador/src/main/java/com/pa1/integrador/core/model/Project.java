@@ -53,8 +53,6 @@ public class Project {
             // throw new BusinessRuleViolationException("Un proyecto cerrado no puede reactivarse");
         }
 
-
-
         this.status = newStatus;
     }
 

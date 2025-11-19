@@ -4,23 +4,27 @@
 
 Team Somerville (Recuperación y Gestión de Estado)
 Required use cases:
-FindProjectById: Obtener un solo proyecto por su ID.
+CreateProject (Implementado para que las pruebas funcionen)
 
-FindAllTasksByProjectId: Obtener todas las tareas asociadas a un proyecto específico.
+CreateTask (Implementado para que las pruebas funcionen, con reglas de Proyecto Cerrado y Horas Positivas)
 
-UpdateTaskStatus: Caso de uso específico para cambiar solo el estado de una tarea
+FindProjectById
 
-Regla de negocio: Al cambiar el estado a DONE, este caso de uso debe establecer el campo finishedAt = now()
+FindAllTasksByProjectId
 
-UpdateProjectStatus: Caso de uso específico para cambiar solo el estado de un proyecto 
+UpdateProjectStatus (con lógica de No Cerrar con Tareas Activas)
 
-Regla de negocio: Implementa las validaciones necesarias para el cambio de estado (ej. un proyecto CLOSED no puede volver a ACTIVE, o un proyecto no puede pasar a CLOSED si tiene tareas IN_PROGRESS).
+UpdateTaskStatus (con lógica de finishedAt)
 
 Endpoints to implement:
+POST /projects
+
+POST /projects/{projectId}/tasks
+
 GET /projects/{projectId}
 
 GET /projects/{projectId}/tasks
 
-PATCH /projects/{projectId}/tasks/{taskId}/status
+PATCH /projects/{projectId}/status
 
-PATCH /projects/{projectId}/status 
+PATCH /projects/{projectId}/tasks/{taskId}/status

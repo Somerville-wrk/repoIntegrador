@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component // Lo marcamos como Componente. ¡Esto resuelve el error de "No beans found"!
+@Component
 public class ProjectRepositoryAdapter implements IPuertoRepoProyecto {
 
     private final IProjectJpaRepository jpaRepository;

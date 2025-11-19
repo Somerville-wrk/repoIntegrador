@@ -21,7 +21,6 @@ public class CreateProjectRequestDTO {
 
     private String description;
 
-    // Getters y Setters
     public String getName() {
         return name; }
     public void setName(String name) {

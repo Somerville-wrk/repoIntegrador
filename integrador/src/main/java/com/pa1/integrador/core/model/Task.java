@@ -1,11 +1,9 @@
 package com.pa1.integrador.core.model;
-
+import com.pa1.integrador.core.exception.ViolacionReglaDeNegocioExcepcion;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Entidad de Dominio (Inmutable) que representa una Tarea.
- */
+
 public class Task {
 
     private Long id;
@@ -30,12 +28,16 @@ public class Task {
     }
 
 
+
     public static Task create(Project project, String title, Integer estimateHours, String assignee, TaskStatus status, LocalDateTime createdAt) {
+
+
         Objects.requireNonNull(project, "El proyecto no puede ser nulo");
         Objects.requireNonNull(title, "El título no puede ser nulo");
 
-        if (estimateHours <= 0) {
-            // throw new BusinessRuleViolationException("La estimación debe ser mayor a 0");
+
+        if (estimateHours == null || estimateHours <= 0) {
+            throw new ViolacionReglaDeNegocioExcepcion("La estimación de horas debe ser un valor positivo.");
         }
 
         LocalDateTime finished = (status == TaskStatus.DONE) ? createdAt : null;
@@ -47,6 +49,7 @@ public class Task {
     public static Task of(Long id, Project project, String title, Integer estimateHours, String assignee, TaskStatus status, LocalDateTime finishedAt, LocalDateTime createdAt) {
         return new Task(id, project, title, estimateHours, assignee, status, finishedAt, createdAt);
     }
+
 
 
     public void changeStatus(TaskStatus newStatus, LocalDateTime timestamp) {
@@ -66,11 +69,11 @@ public class Task {
 
 
 
+
     public Long getId() {
         return id;
     }
 
-    // Único "setter" necesario para la capa de persistencia
     public void setId(Long id) {
         if (this.id != null) {
             // throw new IllegalStateException("El ID de la tarea ya está asignado.");
